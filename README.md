@@ -1,0 +1,1 @@
+[![Daily Automated Commit](https://github.com/a-sc-engineer/devsync-automation_assignment/actions/workflows/daily-commit.yml/badge.svg)](https://github.com/a-sc-engineer/devsync-automation_assignment/actions/workflows/daily-commit.yml)

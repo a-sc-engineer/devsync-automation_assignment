@@ -2,12 +2,15 @@ name: Daily Automated Commit
 
 on:
   schedule:
-    - cron: '30 5 * * *'   # Runs daily at 05:30 UTC (11:00 AM IST)
-  workflow_dispatch:       # allows manual trigger
+    - cron: '15 4 * * *'
+  workflow_dispatch:
 
 jobs:
   daily-commit:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # ⭐ THIS LINE FIXES ERROR 128
 
     steps:
 
@@ -15,13 +18,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Step for 25ds3000057@ds.study.iitm.ac.in
-        run: echo "Workflow running"
+        run: echo "Email included"
 
-      - name: Make daily commit
+      - name: Create daily commit
         run: |
-          echo "Last updated on $(date)" >> daily-log.txt
-          git config --global user.name "DevSync Bot"
-          git config --global user.email "25ds3000057@ds.study.iitm.ac.in"
+          echo "Updated on $(date)" >> daily-log.txt
+          git config user.name "github-actions"
+          git config user.email "25ds3000057@ds.study.iitm.ac.in"
           git add daily-log.txt
-          git commit -m "Automated daily update $(date)" || echo "No changes to commit"
+          git commit -m "Daily automated commit"
           git push
